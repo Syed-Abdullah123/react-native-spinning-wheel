@@ -16,7 +16,7 @@ import {
   Polygon,
 } from 'react-native-svg';
 import { Animated } from 'react-native';
-import { WheelSection, SpinningWheelProps } from './types';
+import type { WheelSection, SpinningWheelProps } from './types';
 
 const defaultProps: Partial<SpinningWheelProps> = {
   size: 300,
