@@ -1,28 +1,103 @@
-# react-native-spinning-wheel
+# React Native Spinning Wheel
 
-A customizable spinning wheel component for React Native applications. This library provides an interactive prize wheel that can be fully customized with different sections, colors, and animations. Perfect for gamification features, reward systems, or interactive elements in your app. Features include configurable wheel sections, customizable animations, a built-in results modal, and full TypeScript support. Built with React Native's Animated API and SVG for smooth performance across iOS and Android.
+A customizable spinning wheel component for React Native applications. This library provides an interactive prize wheel that can be fully customized with different sections, colors, and animations.
+
+## Features
+
+- 🎡 Fully customizable wheel sections with different colors and labels
+- 🎯 Smooth spinning animation with configurable duration
+- 🎨 Customizable colors for wheel sections, spin button, and pointer
+- 📱 Built-in results modal with customizable messages
+- 💪 Written in TypeScript for better type safety
+- ⚡ Built with React Native's Animated API for smooth performance
 
 ## Installation
 
-```sh
+```bash
 npm install react-native-spinning-wheel
+# or
+yarn add react-native-spinning-wheel
+```
+
+## Dependencies
+
+This package requires the following peer dependencies:
+
+```json
+{
+  "react": "*",
+  "react-native": "*",
+  "react-native-svg": "*",
+  "@expo/vector-icons": "*"
+}
 ```
 
 ## Usage
 
+```typescript
+import React from 'react';
+import { SafeAreaView, StyleSheet } from 'react-native';
+import SpinningWheel, { WheelSection } from 'react-native-spinning-wheel';
 
-```js
-import { multiply } from 'react-native-spinning-wheel';
+const sections: WheelSection[] = [
+  {
+    key: 1,
+    label: "Try Again",
+    color: "#FF6B6B",
+    icon: "closecircleo",
+    message: "Better luck next time!"
+  },
+  // Add more sections as needed
+];
 
-// ...
+export default function App() {
+  const handleSpinEnd = (section: WheelSection) => {
+    console.log('Spun and landed on:', section.label);
+  };
 
-const result = await multiply(3, 7);
+  return (
+    <SafeAreaView style={styles.container}>
+      <SpinningWheel
+        sections={sections}
+        size={300}
+        spinDuration={5000}
+        spinButtonColor="#333"
+        spinButtonTextColor="#FFFFFF"
+        pointerColor="#333333"
+        onSpinEnd={handleSpinEnd}
+      />
+    </SafeAreaView>
+  );
+}
 ```
 
+## Props
+
+| Prop                | Type                            | Default   | Description                                |
+| ------------------- | ------------------------------- | --------- | ------------------------------------------ |
+| sections            | WheelSection[]                  | Required  | Array of wheel sections                    |
+| size                | number                          | 300       | Size of the wheel in pixels                |
+| spinDuration        | number                          | 5000      | Duration of spin animation in milliseconds |
+| spinButtonColor     | string                          | "#333"    | Color of the spin button                   |
+| spinButtonTextColor | string                          | "#FFFFFF" | Color of the spin button text              |
+| pointerColor        | string                          | "#333333" | Color of the wheel pointer                 |
+| onSpinEnd           | (section: WheelSection) => void | undefined | Callback function when spin ends           |
+
+## WheelSection Interface
+
+```typescript
+interface WheelSection {
+  key: number;
+  label: string;
+  color: string;
+  icon: string;
+  message: string;
+}
+```
 
 ## Contributing
 
-See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
+Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
