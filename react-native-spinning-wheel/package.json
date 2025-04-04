@@ -44,12 +44,17 @@
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "clean": "del-cli lib",
     "prepare": "bob build",
-    "release": "release-it"
+    "release": "release-it",
+    "prepublishOnly": "npm run prepare"
   },
   "keywords": [
     "react-native",
     "ios",
-    "android"
+    "android",
+    "spinning-wheel",
+    "prize-wheel",
+    "wheel-of-fortune",
+    "expo"
   ],
   "repository": {
     "type": "git",
@@ -89,7 +94,9 @@
   },
   "peerDependencies": {
     "react": "*",
-    "react-native": "*"
+    "react-native": "*",
+    "react-native-svg": "*",
+    "@expo/vector-icons": "*"
   },
   "workspaces": [
     "example"
